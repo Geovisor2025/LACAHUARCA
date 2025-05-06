@@ -531,7 +531,7 @@ var measureControl = (function (Control) {
         }
         if (measuring) {
             /** @type {string} */
-            var helpMsg = 'Click to start drawing';
+            var helpMsg = 'Click para empezar a dibujar';
             if (sketch) {
                 var geom = (sketch.getGeometry());
                 if (geom instanceof ol.geom.Polygon) {
@@ -549,13 +549,13 @@ var measureControl = (function (Control) {
     var measureControl = document.querySelector(".measure-control");
 
     var selectLabel = document.createElement("label");
-    selectLabel.innerHTML = "&nbsp;Measure:&nbsp;";
+    selectLabel.innerHTML = "&nbsp;Medir:&nbsp;";
 
     var typeSelect = document.createElement("select");
     typeSelect.id = "type";
 
     var measurementOption = [
-        { value: "LineString", description: "Length" },
+        { value: "LineString", description: "Distancia" },
         { value: "Polygon", description: "Area" }
         ];
     measurementOption.forEach(function (option) {
@@ -606,7 +606,7 @@ var measureTooltip;
  * Message to show when the user is drawing a line.
  * @type {string}
  */
-var continueLineMsg = 'Click to continue drawing the line';
+var continueLineMsg = 'Click para continuar dibujando la linea';
 
 
 
@@ -614,7 +614,7 @@ var continueLineMsg = 'Click to continue drawing the line';
  * Message to show when the user is drawing a polygon.
  * @type {string}
  */
-var continuePolygonMsg = "1click continue, 2click close";
+var continuePolygonMsg = "1click continuar, 2click parar";
 
 
 var typeSelect = document.getElementById("type");
@@ -887,23 +887,7 @@ map.addControl(layerSwitcher);
 
 
 //attribution
-var bottomAttribution = new ol.control.Attribution({
-  collapsible: false,
-  collapsed: false,
-  className: 'bottom-attribution'
-});
-map.addControl(bottomAttribution);
 
-var attributionList = document.createElement('li');
-attributionList.innerHTML = `
-	<a href="https://github.com/qgis2web/qgis2web">qgis2web</a> &middot;
-	<a href="https://openlayers.org/">OpenLayers</a> &middot;
-	<a href="https://qgis.org/">QGIS</a>	
-`;
-var bottomAttributionUl = bottomAttribution.element.querySelector('ul');
-if (bottomAttributionUl) {
-  bottomAttribution.element.insertBefore(attributionList, bottomAttributionUl);
-}
 
 
 // Disable "popup on hover" or "highlight on hover" if ol-control mouseover
